@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">SampleApp</string>
+
+    <!-- Errors -->
+    <string name="unknown_error_title">Something happened</string>
+    <string name="unknown_error_description">An unknown error happened, please try again</string>
+    <string name="unknown_network_error_title">Network error</string>
+    <string name="unknown_network_error_description">You may have lost connection or there is a network issue</string>
+    <string name="unauthorized">Unauthorized</string>
+    <string name="unauthorized_error_description">You need to sign in to continue</string>
+
+    <!-- Log In -->
+    <string name="log_in_email_label">Email</string>
+    <string name="log_in_email_error">Email format not valid</string>
+    <string name="log_in_password_label">Password</string>
+    <string name="log_in_password_error">Password must contain a lower case, upper case, a number and a special character</string>
+    <string name="log_in_button">LOG IN</string>
+    <string name="log_in_hide_password">Hide password</string>
+    <string name="log_in_show_password">Show password</string>
+    <string name="log_in_welcome">Welcome Back!</string>
+</resources>

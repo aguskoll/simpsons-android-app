@@ -1,0 +1,10 @@
+rootProject.name = "Android Compose Base"
+include("app")
+include(":core:data", ":core:domain", ":core:usecases", ":core:di")
+
+pluginManagement { // https://kotlinlang.org/docs/whatsnew1820.html#configure-gradle-settings
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
