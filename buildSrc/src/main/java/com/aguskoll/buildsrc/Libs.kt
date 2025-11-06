@@ -175,7 +175,7 @@ object Dependencies {
         const val COMPOSE = "1.4.0"
 
         const val COMPOSE_ACTIVITY = "1.8.0"
-        const val COMPOSE_MATERIAL3 = "1.1.1"
+        const val COMPOSE_MATERIAL3 = "1.4.0"
         const val COMPOSE_NAVIGATION = "2.8.2"
         const val COMPOSE_TOOLING = "1.6.0-alpha08"
         const val CONVERTER_GSON = "2.9.0"
