@@ -15,7 +15,7 @@ fun MainNavHost() {
     val navController = AppData.mainNavController
     NavHost(
         navController = navController,
-        startDestination = MainRoutes.LoginPage.route
+        startDestination = MainRoutes.MainPage.route
     ) {
         composable(route = MainRoutes.MainPage.route) { MainPage() }
         composable(route = MainRoutes.LoginPage.route) { backStackEntry ->
@@ -33,5 +33,6 @@ fun MainNavHost() {
         ) { backStackEntry ->
             ErrorPage(message = backStackEntry.arguments?.getString("message") ?: "404")
         }
+
     }
 }
