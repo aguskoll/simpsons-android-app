@@ -83,7 +83,6 @@ dependencies {
         implementation(WORK_MANAGER)
         implementation(COMPOSE)
     }
-    implementation(Dependencies.Rootstrap.FLOW_FORMS)
 
     with(Dependencies.Test) {
         testImplementation(MOCKK)

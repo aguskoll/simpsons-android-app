@@ -75,16 +75,6 @@ object Dependencies {
         val JAVA_TARGET = "17"
     }
 
-    object Rootstrap {
-        const val FLOW_FORMS = "com.github.rootstrap.FlowForms:FlowForms-Core:${Versions.FLOW_FORMS}"
-    }
-
-    object Tv {
-        const val TV_FOUNDATION = "androidx.tv:tv-foundation:${Versions.COMPOSE_TV}"
-        const val TV_MATERIAL = "androidx.tv:tv-material:${Versions.COMPOSE_TV}"
-        const val LEANBACK = "androidx.leanback:leanback:${Versions.LEANBACK}"
-    }
-
     object MEDIA {
         const val MEDIA_3 = "androidx.media3:media3-exoplayer:${Versions.MEDIA_3}"
         const val MEDIA_3_UI = "androidx.media3:media3-ui:${Versions.MEDIA_3}"

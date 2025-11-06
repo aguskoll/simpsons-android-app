@@ -1,8 +1,3 @@
-# android-base-compose
-
-Android Compose Base is a boilerplate project created by Rootstrap for new projects using Kotlin and Jetpack Compose. 
-The main objective is helping any new projects jump-start into feature development by providing a solid foundation.
-
 ## How to use this template
 You can use this open-source project as a template of your new Android projects. Steps:
 
@@ -48,12 +43,7 @@ This base ViewModel facilitates state and navigation event management within And
 - **State Management**: Utilizes `MutableStateFlow` for managing UI state, providing a thread-safe way to observe and update the UI state reactively.
 - **Navigation Events**: Uses a `Channel` to handle one-time navigation events, ensuring that events are handled once and state management is decoupled from event handling.
 - Ensure your UI state classes implement the UiState interface provided in this package for type safety.
-
-## Navigation and Deep Links
-
-- Add nav config and deep link example with a guide for it.
-  [Issue](https://github.com/rootstrap/android-base-compose/issues/9)
-
+- 
 **Note**: To add deep links:
 Add the `.well-known/assetlinks.json` file to your server to register the app
 Check the documentation: [Docs](https://developer.android.com/training/app-links/verify-android-applinks)

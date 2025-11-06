@@ -8,3 +8,6 @@ pluginManagement { // https://kotlinlang.org/docs/whatsnew1820.html#configure-gr
         gradlePluginPortal()
     }
 }
+plugins {
+    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+}
