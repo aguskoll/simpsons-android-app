@@ -12,6 +12,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -45,7 +46,9 @@ fun CharactersPage() {
 
 @Composable
 fun CharactersList(characters: List<SimpsonCharacter>) {
-    LazyColumn {
+    LazyColumn(modifier = Modifier
+        .testTag("CHARACTERS_LIST")
+        .fillMaxSize()) {
         items(characters) { character ->
             Text(character.name, style = TextStyle(
                 color = MaterialTheme.colorScheme.onSurface,
