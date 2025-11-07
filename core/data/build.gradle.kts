@@ -3,8 +3,6 @@ import Dependencies.Common.JAVA_TARGET
 import Dependencies.Common.JAVA_VERSION
 import Dependencies.Kotlin.COROUTINES_ANDROID
 import Dependencies.Network.OKHTTP
-//import Dependencies.Network.OKHTTP_BOM
-import Dependencies.Network.OKHTTP_LOGGING_INTERCEPTOR
 import Dependencies.Network.RETROFIT
 import Dependencies.Network.RETROFIT_KTX_CONVERTER
 import Dependencies.Test.JUNIT
@@ -34,11 +32,13 @@ android {
     buildTypes {
         getByName("debug") {
             isMinifyEnabled = false
-            buildConfigField("String", "API_BASE_URL", "\"https://some-api-url.com/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://thesimpsonsapi.com/api/\"")
+            buildConfigField("String", "API_IMAGES_URL", "\"https://cdn.thesimpsonsapi.com/\"")
         }
         getByName("release") {
             isMinifyEnabled = true
-            buildConfigField("String", "API_BASE_URL", "\"https://some-api-url.com/\"")
+            buildConfigField("String", "API_BASE_URL", "\"https://thesimpsonsapi.com/api\"")
+            buildConfigField("String", "API_IMAGES_URL", "\"https://cdn.thesimpsonsapi.com/\"")
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
     }

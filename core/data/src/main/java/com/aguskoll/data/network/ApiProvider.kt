@@ -11,9 +11,9 @@ class ApiProvider(
     val httpClientProvider: HttpClientProvider
 ) {
 
-    val myApi: MyApi by lazy {
+    val api: SimpsonsApi by lazy {
         createRetrofitConfig(baseUrl = BuildConfig.API_BASE_URL)
-            .create(MyApi::class.java)
+            .create(SimpsonsApi::class.java)
     }
 
     private fun createRetrofitConfig(baseUrl: String) = Retrofit.Builder()
