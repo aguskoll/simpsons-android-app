@@ -52,7 +52,7 @@ fun MainPage(rootNavController: NavHostController) {
         ) {
             composable(route = BottomDest.Characters.route) { CharactersPage(
                 onCharacterClick = { character ->
-                    rootNavController .navigate(MainRoutes.CharacterDetail.withArg(character.id.toString())) }
+                    rootNavController.navigate(MainRoutes.CharacterDetail.withArg(character.id.toString() )) }
             ) }
             composable(route = BottomDest.Episodes.route) { EpisodesPage() }
         }
