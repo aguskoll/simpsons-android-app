@@ -35,7 +35,9 @@ data class CharacterDto(
     fun toDomain(): SimpsonCharacter = SimpsonCharacter(
         id = id,
         name = name,
-        portraitPath = portraitPath,
+        portraitPath = portraitPath?.let { path ->
+           com.aguskoll.data.BuildConfig.API_IMAGES_URL +"200"+ path
+        },
         age = age,
         birthdate = birthdate,
         gender = gender,

@@ -28,6 +28,7 @@ import org.koin.dsl.module
 @RunWith(AndroidJUnit4::class)
 class LoginUITest {
     @get:Rule
+    @JvmField
     val composeTestRule = createAndroidComposeRule<AppActivity>()
 
     private lateinit var testModule: Module

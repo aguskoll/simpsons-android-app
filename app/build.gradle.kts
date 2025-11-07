@@ -72,6 +72,7 @@ dependencies {
         implementation(ICONS_EXTENDED)
         implementation(NAVIGATION_COMPOSE)
         implementation(LIFECYCLE_RUNTIME)
+        implementation(COIL)
         debugImplementation(UI_TOOLING)
     }
 
