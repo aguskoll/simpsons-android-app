@@ -1,5 +1,6 @@
 package com.aguskoll.simpsons.ui.pages.characters
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,7 +19,10 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -80,13 +84,35 @@ fun CharacterItem(character: SimpsonCharacter) {
                 contentDescription = character.name,
                 modifier = Modifier
                     .fillMaxSize()
+                    .testTag("CHARACTER_IMAGE")
+                    .padding(4.dp)
             )
-            Column(modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(16.dp)) {
+            // Gradient scrim between image and text to improve text visibility
+            Box(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .background(
+                        brush = Brush.verticalGradient(
+                            colors = listOf(
+                                Color.Transparent,
+                                Color(0xB8000000)
+                            )
+                        )
+                    )
+            )
+            Column(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(16.dp)
+            ) {
                 Text(
                     character.name,
-                    style = MaterialTheme.typography.headlineMedium,
+                    style = MaterialTheme.typography.headlineMedium.copy(
+                        color = MaterialTheme.colorScheme.inversePrimary,
+                        fontWeight = FontWeight.Bold
+                    ),
                 )
             }
         }
