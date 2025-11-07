@@ -31,6 +31,10 @@ class CharactersViewModel(val getCharactersUseCase: GetCharactersUseCase) :
                 }
         }
     }
+
+    fun onCharacterClick(character: SimpsonCharacter) {
+        pushEvent(CharactersEvent.CharacterClick(character))
+    }
 }
 
 data class CharactersUiState(
@@ -41,4 +45,5 @@ data class CharactersUiState(
 
 sealed class CharactersEvent {
     object NetworkError : CharactersEvent()
+    data class CharacterClick(val character: SimpsonCharacter) : CharactersEvent()
 }

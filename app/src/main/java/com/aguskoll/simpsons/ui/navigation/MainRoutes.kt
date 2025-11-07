@@ -1,5 +1,7 @@
 package com.aguskoll.simpsons.ui.navigation
 
+import com.aguskoll.domain.models.SimpsonCharacter
+
 /**
  * Examples of navigation routes
  *  Example of nav with arguments:
@@ -42,5 +44,8 @@ sealed class MainRoutes(val route: String) {
     object LoginPage : MainRoutes("login")
     object ErrorPage : MainRoutes("error/{message}") {
         fun withArg(errorMessage: String) = "error/$errorMessage"
+    }
+    object CharacterDetail : MainRoutes("character/{id}") {
+        fun withArg(id: String) = "character/$id"
     }
 }

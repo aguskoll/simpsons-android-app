@@ -59,6 +59,7 @@ class CharactersUITest {
         // List container should exist
         composeTestRule.onNodeWithTag("CHARACTERS_LIST").assertExists()
         composeTestRule.onNodeWithTag("CHARACTER_IMAGE").assertExists()
+
         // Characters should be visible
         composeTestRule.onNodeWithText("Homer Simpson").assertIsDisplayed()
         composeTestRule.onNodeWithText("Marge Simpson").assertIsDisplayed()

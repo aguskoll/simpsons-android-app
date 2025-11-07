@@ -1,6 +1,7 @@
 package com.aguskoll.simpsons.ui.pages.characters
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,7 +32,7 @@ import com.aguskoll.domain.models.SimpsonCharacter
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun CharactersPage() {
+fun CharactersPage(onCharacterClick: (SimpsonCharacter) -> Unit) {
     val viewModel: CharactersViewModel = koinViewModel()
     val uiState by viewModel.uiStateFlow.collectAsStateWithLifecycle()
     val event by viewModel.eventFlow.collectAsStateWithLifecycle(null)
@@ -41,14 +42,17 @@ fun CharactersPage() {
             is CharactersEvent.NetworkError -> {
 
             }
-
+            is CharactersEvent.CharacterClick -> {
+               val character = (event as CharactersEvent.CharacterClick).character
+               onCharacterClick(character)
+            }
             else -> {
 
             }
         }
     }
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        CharactersList(characters = uiState.characters)
+        CharactersList(characters = uiState.characters, onCharacterClick = { viewModel.onCharacterClick(it) })
         if (uiState.isLoading) {
             CircularProgressIndicator()
         }
@@ -56,27 +60,27 @@ fun CharactersPage() {
 }
 
 @Composable
-fun CharactersList(characters: List<SimpsonCharacter>) {
+fun CharactersList(characters: List<SimpsonCharacter>, onCharacterClick: (SimpsonCharacter) -> Unit) {
     LazyRow(
         modifier = Modifier
             .testTag("CHARACTERS_LIST")
             .fillMaxWidth()
     ) {
         items(characters) { character ->
-            CharacterItem(character)
+            CharacterItem(character, onCharacterClick)
         }
     }
 }
 
 @Composable
-fun CharacterItem(character: SimpsonCharacter) {
+fun CharacterItem(character: SimpsonCharacter, onCharacterClick: (SimpsonCharacter) -> Unit) {
     Card(
         modifier = Modifier
             .testTag("CHARACTER_ITEM")
             .width(width = 250.dp)
             .height(height = 300.dp)
             .padding(horizontal = 16.dp)
-
+            .clickable(onClick = { onCharacterClick(character) })
     ) {
         Box {
             AsyncImage(
@@ -134,6 +138,7 @@ fun CharactersPreview() {
                 name = "Marge Simpson",
                 portraitPath = "https://upload.wikimedia.org/wikipedia/en/0/02/Homer_Simpson_2006.png",
             )
-        )
+        ),
+        onCharacterClick = {}
     )
 }

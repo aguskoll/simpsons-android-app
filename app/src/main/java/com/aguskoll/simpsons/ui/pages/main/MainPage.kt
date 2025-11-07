@@ -17,10 +17,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
  import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.aguskoll.simpsons.ui.navigation.MainRoutes
 import com.aguskoll.simpsons.ui.pages.characters.CharactersPage
 import com.aguskoll.simpsons.ui.pages.episodes.EpisodesPage
 
@@ -35,20 +37,23 @@ sealed class BottomDest(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainPage() {
-    val navController = rememberNavController()
+fun MainPage(rootNavController: NavHostController) {
+    val tabsNavController  = rememberNavController()
     Scaffold(
         topBar = {
             TopAppBar(title= { Text("The simpsons App") })
         },
-        bottomBar = { BottomBar(navController = navController) }
+        bottomBar = { BottomBar(navController = tabsNavController ) }
     ) { innerPadding->
         NavHost(
-            navController = navController,
+            navController = tabsNavController ,
             startDestination = BottomDest.Characters.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(route = BottomDest.Characters.route) { CharactersPage() }
+            composable(route = BottomDest.Characters.route) { CharactersPage(
+                onCharacterClick = { character ->
+                    rootNavController .navigate(MainRoutes.CharacterDetail.withArg(character.id.toString())) }
+            ) }
             composable(route = BottomDest.Episodes.route) { EpisodesPage() }
         }
     }

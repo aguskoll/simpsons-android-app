@@ -5,6 +5,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.aguskoll.simpsons.ui.pages.characters.CharacterDetailPage
 import com.aguskoll.simpsons.ui.pages.error.ErrorPage
 import com.aguskoll.simpsons.ui.pages.login.LoginPage
 import com.aguskoll.simpsons.ui.pages.main.MainPage
@@ -17,7 +18,7 @@ fun MainNavHost() {
         navController = navController,
         startDestination = MainRoutes.MainPage.route
     ) {
-        composable(route = MainRoutes.MainPage.route) { MainPage() }
+        composable(route = MainRoutes.MainPage.route) { MainPage(navController) }
         composable(route = MainRoutes.LoginPage.route) { backStackEntry ->
             LoginPage(
                 onLoginSuccess = {
@@ -33,6 +34,8 @@ fun MainNavHost() {
         ) { backStackEntry ->
             ErrorPage(message = backStackEntry.arguments?.getString("message") ?: "404")
         }
-
+        composable(MainRoutes.CharacterDetail.route, arguments = listOf(navArgument("id") { type = NavType.StringType })) { backStackEntry ->
+            CharacterDetailPage(characterId = backStackEntry.id)
+        }
     }
 }
